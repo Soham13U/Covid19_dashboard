@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <title>Dynamic Update Data</title>
+	 <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+	 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+	 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+	<br>
+	<form class="form-inline"><center>
+	  <div class="form-group">
+	    <label class="sr-only" for="stateinput">Select State</label>
+	    <select id="state">
+  		<option value="TT" selected>All States</option>
+		</select>
+	  </div></center>
+	</form>
+	<br><br><br>
+	<div>
+	<div class="chart-container" style="height:40vh; width:40vw;display: inline-block;float: left;">
+	<canvas id="barChart1"></canvas></div>
+	<div class="chart-container" style="height:40vh; width:40vw;display: inline-block;float: right;">
+	<canvas id="barChart2"></canvas></div></div><br><br>
+	<div class="chart-container" style="height:40vh; width:40vw;display: inline-block;float: left;">
+	<canvas id="barChart3"></canvas></div>
+	<div class="chart-container" style="height:40vh; width:40vw;display: inline-block;float: right;">
+	<canvas id="barChart4"></canvas></div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+
+	$.getJSON('https://api.covid19india.org/data.json', function (Data) {
+
+		 for(var i=0;i<Data.statewise.length;i++){
+		 	
+		 	if(i != 0)
+		 	$('#state').append(new Option(Data.statewise[i].state,String(Data.statewise[i].statecode)));
+		 }
+
+      });
+
+
+	var ctx = $('#barChart1');
+         var barChart1 = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: [],
+                 datasets: [{
+                     data: [],
+                     label:"confirmeed",
+                     borderColor: 'blue',
+                     backgroundColor: 'lightblue',
+                     borderWidth:1,
+                     barThickness:10,
+                     fill: true
+                 }
+                 ]
+             },
+             options: {
+                 title: {
+                     display: true,
+                     text: 'StateWise Visualization'
+                 },
+                 scales:{
+                   xAxes:[{
+                     type:'time',
+                     time:{
+                     unit:'week'
+                   }
+                   }]
+                 }
+             }
+         });
+
+      var ctx = $('#barChart2');
+         var barChart2 = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: [],
+                 datasets: [{
+                     data: [],
+                     label:"active",
+                     borderColor: 'white',
+                     backgroundColor: '#5c5f94',
+                     borderWidth:1,
+                     barThickness:10,
+                     fill: true
+                 }
+                 ]
+             },
+             options: {
+                 title: {
+                     display: true,
+                     text: 'StateWise Visualization'
+                 },
+                 scales:{
+                   xAxes:[{
+                     type:'time',
+                     time:{
+                     unit:'week'
+                   }
+                   }]
+                 }
+             }
+         });
+
+         var ctx = $('#barChart3');
+         var barChart3 = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: [],
+                 datasets: [{
+                     data: [],
+                     label:"recovered",
+                     borderColor: 'green',
+                     backgroundColor: 'lightgreen',
+                     borderWidth:1,
+                     barThickness:10,
+                     fill: true
+                 }
+                 ]
+             },
+             options: {
+                 title: {
+                     display: true,
+                     text: 'StateWise Visualization'
+                 },
+                 scales:{
+                   xAxes:[{
+                     type:'time',
+                     time:{
+                     unit:'week'
+                   }
+                   }]
+                 }
+             }
+         });
+
+         var ctx = $('#barChart4');
+         var barChart4 = new Chart(ctx, {
+             type: 'bar',
+             data: {
+                 labels: [],
+                 datasets: [{
+                     data: [],
+                     label:"death",
+                     borderColor: 'red',
+                     backgroundColor: 'pink',
+                     borderWidth:1,
+                     barThickness:10,
+                     fill: true
+                 }
+                 ]
+             },
+             options: {
+                 title: {
+                     display: true,
+                     text: 'StateWise Visualization'
+                 },
+                 scales:{
+                   xAxes:[{
+                     type:'time',
+                     time:{
+                     unit:'week'
+                   }
+                   }]
+                 }
+             }
+         });
+
+         var Data;
+
+         $.get('https://api.covid19india.org/states_daily.json',function(data){
+         	Data = data;
+         	getData();
+
+         	
+		});
+
+
+  function getData(){
+
+  			var daily_con = [], dates = [], daily_act =[], daily_rec = [], daily_dec = [];
+
+			var state = $('#state').val();
+
+			var len = Data.states_daily.length;
+
+			for (var i=57;i<len; i+=3) {
+	          daily_con.push(Data.states_daily[i][state.toLowerCase()]);
+	         
+	          daily_rec.push(Data.states_daily[i+1][state.toLowerCase()]);
+	         
+	          daily_dec.push(Data.states_daily[i+2][state.toLowerCase()]);
+	         
+	          dates.push(Data.states_daily[i].date);
+	      
+	          daily_act.push(Number(daily_con[daily_con.length-1])-Number(daily_rec[daily_rec.length-1])-Number(daily_dec[daily_dec.length-1]));
+         	
+         	 }
+
+         	 //Update Datasets... 
+			
+			barChart1.data.datasets[0].data = daily_con;
+			barChart1.data.labels = dates;
+
+			barChart2.data.datasets[0].data = daily_act;
+			barChart2.data.labels = dates;
+
+			barChart3.data.datasets[0].data = daily_rec;
+			barChart3.data.labels = dates;
+
+			barChart4.data.datasets[0].data = daily_dec;
+			barChart4.data.labels = dates;
+
+			barChart1.update();
+			barChart2.update();
+			barChart3.update();
+			barChart4.update();
+
+}
+
+			/*Updating the bar chart with updated data in every second. */
+
+			setInterval(function(){
+				$('#state').change(getData);
+			},1000);
+});
+</script>
+</body>
+</html>

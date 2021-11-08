@@ -1,0 +1,159 @@
+		@import "https://fonts.googleapis.com/css?family=Lato:300,400,700";
+		*{
+			font-family: Lato;
+		}
+		#main_table span{
+			width:150px;
+			/*height:23px; */
+			display:table-cell;
+			padding:.5rem;
+			margin-top:1px;
+			border-collapse: separate;
+			border-spacing:3px 4px;
+			text-align:left;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all .1s ease-in-out;
+		}
+		#main_table div span{
+			font-size:16px;
+		}
+
+        .table-split{
+			display: table-cell;
+			width: 0.4%;
+		}
+
+		#main_table div:nth-child(odd) span{
+			background: rgb(248, 249, 250);
+		}
+		#main_table div:nth-child(even) span{
+			background-color:white;
+		}
+		table{		
+			padding-top:20px;
+			padding-bottom: 20px;
+			border-spacing:3px 4px;
+			border-collapse: separate;
+			text-align:left;
+			
+		}
+		tr,th,td{
+			border-radius: 5px;
+			padding:4px;
+		}
+		tr:nth-child(odd){
+			background: rgb(248, 249, 250);
+		}
+		tr:nth-child(even){
+			background-color:white;
+		}
+		th{
+			background:rgba(108,117,125,.1627451);
+		}
+		#main_table div:hover span { background: rgba(248, 249, 250,0.3); }
+		tr:hover td{ background-color:rgba(108,117,125,.0627451); }
+
+		 path, circle{
+		  stroke:rgba(0,123,255,.2627451) !important;
+		  stroke-width:2px;
+		  stroke-linejoin: round;
+		  cursor: pointer;
+		  }
+		  .stkhover{
+		  	stroke:rgba(0,123,255,1) !important;
+		 	stroke-width:2px;
+		  }
+
+		  .section11{ fill:rgba(0,123,255,.0627451) !important; stroke:rgba(0,123,255,.2627451) !important;}
+		  .section21{ fill:rgba(0,123,255,.200451) !important; stroke:rgba(0,123,255,.2627451) !important; }
+		  .section31{ fill:rgba(0,123,255,.4627451) !important;stroke:rgba(0,123,255,.2627451) !important; }
+		  .section41{ fill:rgba(0,123,255,.6627451) !important;stroke:rgba(0,123,255,.2627451) !important; }
+		  .section51{ fill:rgba(0,123,255,.8627451) !important; stroke:rgba(0,123,255,.2627451) !important;}
+
+		  .section11:hover,
+		  .section21:hover,
+		  .section31:hover,
+		  .section41:hover,
+		  .section51:hover{ stroke:rgba(0,123,255,1) !important; stroke-width:2px;  }
+
+		  .section12{ fill:rgba(255,255,0,0.02549) !important; stroke:rgba(255,255,0,.23456) !important;}
+		  .section22{ fill:rgba(255,255,0,0.042549) !important; stroke:rgba(255,255,0,.25678) !important;}
+		  .section32{ fill:rgba(255,255,0,0.162549) !important; stroke:rgba(255,255,0,.2789) !important;}
+		  .section42{ fill:rgba(255,255,0,0.2878249) !important; stroke:rgba(255,255,0,.2946) !important;}
+		  .section52{ fill:rgba(255,255,0,0.292549) !important; stroke:rgba(255,255,0,.2068) !important;}
+
+		  .section12:hover,
+		  .section22:hover,
+		  .section32:hover,
+		  .section42:hover,
+		  .section52:hover{ stroke:rgba(255,255,0,0.8976) !important; stroke-width:2px;  }
+
+		  .section13{ fill:rgba(40,167,69,.02549) !important; stroke:rgba(40,167,69,0.099) !important; }
+		  .section23{ fill:rgba(40,167,69,.042549) !important;stroke:rgba(40,167,69,0.099) !important; }
+		  .section33{ fill:rgba(40,167,69,.162549) !important;stroke:rgba(40,167,69,0.099) !important; }
+		  .section43{ fill:rgba(40,167,69,.282549) !important;stroke:rgba(40,167,69,0.099) !important; }
+		  .section53{ fill:rgba(40,167,69,.292549) !important;stroke:rgba(40,167,69,0.099) !important; }
+
+		  .section13:hover,
+		  .section23:hover,
+		  .section33:hover,
+		  .section43:hover,
+		  .section53:hover{ stroke:rgba(40,167,69,.4549) !important; stroke-width:2px;  }
+
+
+		  .section14{ fill:rgba(255,7,58,.02549) !important; stroke:rgba(255,7,58,.092549) !important;}
+		  .section24{ fill:rgba(255,7,58,.042549) !important;stroke:rgba(255,7,58,.092549) !important;}
+		  .section34{ fill:rgba(255,7,58,.162549) !important; stroke:rgba(255,7,58,.092549) !important;}
+		  .section44{ fill:rgba(255,7,58,.282549) !important; stroke:rgba(255,7,58,.092549) !important;}
+		  .section54{ fill:rgba(255,7,58,.292549) !important; stroke:rgba(255,7,58,.092549) !important;}
+
+		  .section14:hover,
+		  .section24:hover,
+		  .section34:hover,
+		  .section44:hover,
+		  .section54:hover{ stroke:rgba(255,7,58,.39549) !important; stroke-width:2px;  }
+
+		  #info-box{
+		  	margin-top: 40px;
+		  	margin-left:-720px;
+		  	display: inline-block;
+		  }
+		 
+		#map{
+		background-color: white;
+		}
+		html {
+		  font-size: 1rem;
+		}
+
+		@media-screen and (width:590){
+		  html {
+		    font-size: 1.2rem;
+		  }
+		}
+
+		@media-screen and (width:800){
+		  html {
+		    font-size: 1.4rem;
+		  }
+		}
+
+		@media-screen and (width:1200){
+		  html {
+		    font-size: 1.5rem;
+		  }
+		}
+		
+
+
+    
+/*
+     
+rgba(255,7,58,.12549) confirmed
+rgba(0,123,255,.0627451) active
+rgba(40,167,69,.12549) recovered
+rgba(108,117,125,.0627451) death
+rgba(32,26,162,.12549) tested
+
+*/
