@@ -5,3 +5,4 @@
 NOTE:API has stopped working so certain modules are not functioning, please refer to the screenshots
 
 ![Dashboard](https://github.com/Soham13U/Covid19_dashboard/blob/master/Dashboard.png)
+> Dashboard
