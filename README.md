@@ -4,4 +4,4 @@
 
 NOTE:API has stopped working so certain modules are not functioning, please refer to the screenshots
 
-![This is an image](https://github.com/Soham13U/Covid19_dashboard/blob/master/Dashboard.png)
+![Dashboard](https://github.com/Soham13U/Covid19_dashboard/blob/master/Dashboard.png)
